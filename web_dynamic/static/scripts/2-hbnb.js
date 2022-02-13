@@ -18,4 +18,14 @@ $(document).ready(function () {
 	}
 	$('.amenities h4').text(amenStr.substring(0, amenStr.length - 2));
     });
+    // check if status is OK for API
+    $.get('http://0.0.0.0:5001/api/v1/status/', function (data, textStatus) {
+	if (textStatus === 'success') {
+	    if (data.status == 'OK') {
+		$('DIV#api_status').addClass('available');
+	    } else {
+		$('DIV#api_status').removeClass('available');
+	    }
+	}
+    });
 });
